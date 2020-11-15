@@ -1,0 +1,20 @@
+package singleton
+
+import (
+	"sync"
+)
+
+type Singleton struct {
+
+}
+
+var instance *Singleton
+var once sync.Once
+
+func GetInstance() *Singleton  {
+	once.Do(func() {
+		if instance == nil{
+			instance = &Singleton{}
+	}})
+	return instance
+}
